@@ -3,8 +3,10 @@ import logging
 
 from config import TOKKEN
 
+import keyboards.keyboards as kb
+
 from aiogram import Bot, Dispatcher
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 
 logging.basicConfig(
@@ -19,8 +21,15 @@ dp = Dispatcher()
 async def cmd_start(message: Message):
     await message.answer("""
 Привет я бот🤖 учета товаров на скалде.
-Что хочешь узнать?
+Давай начнем работу!
+Введи эту команду /main
 """)
+    
+@dp.message(Command("main"))
+async def cmd_main(message: Message):
+    await message.answer("""
+Что хочешь сделать?
+""", reply_markup = kb.main)
 
 
 async def main():
