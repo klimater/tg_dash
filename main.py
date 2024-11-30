@@ -17,12 +17,18 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer("Привет")
+    await message.answer("""
+Привет я бот🤖 учета товаров на скалде.
+Что хочешь узнать?
+""")
 
 
 async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    logging.info("Bot is starting...")
-    asyncio.run(main())
+    try:
+        logging.info("Bot is starting...")
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("exit")
