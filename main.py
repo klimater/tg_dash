@@ -17,6 +17,7 @@ logging.basicConfig(
 bot = Bot(token=TOKKEN)
 dp = Dispatcher()
 
+#Обработчик команды старт
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
     await message.answer("""
@@ -24,7 +25,8 @@ async def cmd_start(message: Message):
 Давай начнем работу!
 Введи эту команду /main
 """)
-    
+
+#команда главного меню
 @dp.message(Command("main"))
 async def cmd_main(message: Message):
     await message.answer("""
