@@ -1,0 +1,1 @@
+TOKKEN = "7122552914:AAG_ZmUxvqlrtcMbV4nZidKJxLpyiy_iuF0"
