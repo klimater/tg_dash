@@ -33,6 +33,14 @@ async def cmd_main(message: Message):
 Что хочешь сделать?
 """, reply_markup = kb.main)
 
+#Обработчик сообщений, который ловит текст с кнопок
+@dp.message()
+async def message_user(message: Message):
+    if message.text == "Сводка📊":
+        await message.answer(" СВОДКА")
+    elif message.text == "Действие🔨":
+        await message.answer(" ДЕЙСТВИЕ")
+
 
 async def main():
     await dp.start_polling(bot)
