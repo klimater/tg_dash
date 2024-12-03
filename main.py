@@ -41,7 +41,7 @@ async def message_svodka(message: Message):
 #Обработчик ловит текст "Действие🔨"
 @dp.message(F.text == "Действие🔨")
 async def message_action(message: Message):
-    await message.answer("Действие")
+    await message.answer("Действие", reply_markup= kb.action)
 
 
 
