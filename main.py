@@ -30,18 +30,28 @@ async def cmd_start(message: Message):
 async def cmd_main(message: Message):
     await message.answer("""
 Что хочешь сделать?
-""", reply_markup = kb.main)
+""", reply_markup = kb.menu)
 
 #Обработчик ловит текст "Сводка📊"
-@dp.message(F.text == "Сводка📊")
+@dp.message(F.text == "Сводка за день📊")
 async def message_svodka(message: Message):
-    await message.answer(" СВОДКА")
+    await message.answer(" СВОДКА", reply_markup = kb.main_menu)
 
 #Обработчик ловит текст "Показать продажи за сегодня📝"
-@dp.message(F.text == "Показать продажи за сегодня📝")
+@dp.message(F.text == "Действия📝")
 async def message_action(message: Message):
-    await message.answer("данные")
+    await message.answer("данные", reply_markup = kb.action)
 
+
+# Добавление товара
+@dp.message(F.text == "Добавить")
+async def message_svodka(message: Message):
+    await message.answer(" СВОДКА", reply_markup= kb.menu)
+
+# Удаление товара
+@dp.message(F.text == "Удалить")
+async def message_svodka(message: Message):
+    await message.answer(" СВОДКА", reply_markup= kb.menu)
 
 
 async def main():
