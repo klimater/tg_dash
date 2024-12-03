@@ -2,22 +2,15 @@ import openpyxl
 import openpyxl.reader
 import openpyxl.reader.excel
 
-# Функция безопасного открытия файла
-def open_exel(file_name):
-    try:
-        wb = openpyxl.reader.excel.load_workbook(filename= file_name)
-        wb.active = 0
-    except:
-        print("Файл не найден")
-        return None
-    
-    return wb
+
+try:
+    wb = openpyxl.reader.excel.load_workbook(filename = "BD.xlsx")
+    wb.active = 0
+except:
+    print("Файл не найден")
 
 # Создание новой продажи
-def add_sale(wb, date, name, category, quantity, cost):
-    if wb is None:
-        return "Ошибка файл не найден"
-    
+def add_sale_bd(date, name, category, quantity, cost):
     sheet = wb.active
 
     for row in range(1, sheet.max_row + 2):
@@ -32,10 +25,7 @@ def add_sale(wb, date, name, category, quantity, cost):
         
 
 # Удаление продажи
-def delete_sale(wb, date, name, count_elem):
-    if wb is None:
-        return "Ошибка файл не найден"
-    
+def delete_sale_bd(wb, date, name, count_elem):
     sheet = wb.active
     
     for row in range(1, sheet.max_row + 1):
@@ -53,10 +43,7 @@ def delete_sale(wb, date, name, count_elem):
 
 
 # Функция вывода даных из exel файла
-def output_sheet(wb):
-    if wb is None:
-        return "Ошибка файл не найден"
-    
+def output_sheet_bd(wb):
     sheet = wb.active
 
     value = """"""
@@ -68,6 +55,3 @@ def output_sheet(wb):
         cost = sheet[row][4].value
         value += f"""{str(date_sale)[:11]} {name} {category} {quantity} {cost}\n"""
     return value
-
-wb = open_exel("BD.xlsx")
-delete_sale(wb, "03.12.2024", 'Ноутбук', 1)
