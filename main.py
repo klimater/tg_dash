@@ -23,11 +23,10 @@ async def cmd_start(message: Message):
     await message.answer("""
 Привет я бот🤖 учета товаров на скалде.
 Давай начнем работу!
-Введи эту команду /main
-""")
+""", reply_markup=kb.main_menu)
 
 #команда главного меню
-@dp.message(Command("main"))
+@dp.message(F.text == "Главное меню")
 async def cmd_main(message: Message):
     await message.answer("""
 Что хочешь сделать?
