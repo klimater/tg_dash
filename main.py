@@ -38,10 +38,10 @@ async def cmd_main(message: Message):
 async def message_svodka(message: Message):
     await message.answer(" СВОДКА")
 
-#Обработчик ловит текст "Действие🔨"
-@dp.message(F.text == "Действие🔨")
+#Обработчик ловит текст "Показать продажи за сегодня📝"
+@dp.message(F.text == "Показать продажи за сегодня📝")
 async def message_action(message: Message):
-    await message.answer("Действие", reply_markup= kb.action)
+    await message.answer("данные")
 
 
 
